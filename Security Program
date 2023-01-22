@@ -1,0 +1,44 @@
+This program stores a username and password into a hashmap and checks whether the password is inside of the hashmap previously. 
+If it is, then successfully login, if not, then it does not match. 
+
+#include<iostream>
+#include<map>
+#include<string>
+#include <utility>
+
+using namespace std;
+
+int main()
+{
+    map<string,string> userPass; //map: key: Username  Value: Password 
+    string username, password; 
+ 
+    cout<<"Please Enter Your Username: ";
+    cin>>username;
+    cout<<"Please Enter Your Password: ";
+    cin>>password;
+ 
+    // store username and password in the map
+    userPass.insert(pair<string,string>(username,password));
+ 
+    // search username in the map
+    auto search = userPass.find(username);
+    if(search != userPass.end())
+    {
+        // same username found
+        if(search->second == password)
+        {
+            cout<<"Successfully Logged In. "<<endl;
+        }
+        else
+        {
+            cout<<"Username and Password Does Not Match. "<<endl;
+        }
+    }
+    else
+    {
+        cout<<"Username Does Not Exist."<<endl;
+    }
+ 
+    return 0;
+}
